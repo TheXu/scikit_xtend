@@ -33,18 +33,23 @@ def min_precision(y_true, y_pred):
     References
     ----------
     .. [1] `Unachievable Region in Precision-Recall Space by Boyd, Costa, Davis, and Page 2012
+            <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3858955/>
     
     Examples
     --------
     >>> y_true = np.array([0, 1, 1, 0, 1, 1])
     >>> y_pred = np.array([0, 1, 1, 0, 0, 1])
+    >>> min_precision(y_true, y_pred)
+    ... # doctest: +ELLIPSIS
+    array([0.66666667, 0.6       ])
+    
     """
     # Get float or array of Recall Scores
     _, r, _, _ = precision_recall_fscore_support(y_true, y_pred)
     # Calculate skew
     s = np.count_nonzero(y_true)/y_true.size
     # Calculate minimum precision for given recall score and skew of labels
-    min_precision = (s*r)/(1-s+s*r)
+    min_precision = np.array( list( map( lambda r: (s*r)/(1-s+s*r), r ) ) )
     return(min_precision)
     
 def aucpr_min(y_true):
@@ -70,6 +75,7 @@ def aucpr_min(y_true):
     References
     ----------
     .. [1] `Unachievable Region in Precision-Recall Space by Boyd, Costa, Davis, and Page 2012
+            <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3858955/>
     
     Relevance
     ---------
@@ -120,6 +126,7 @@ def min_average_precision(y_true):
     References
     ----------
     .. [1] `Unachievable Region in Precision-Recall Space by Boyd, Costa, Davis, and Page 2012
+            <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3858955/>
     
     Relevance
     ---------
