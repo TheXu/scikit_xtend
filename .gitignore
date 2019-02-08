@@ -1,0 +1,14 @@
+#ignore data file
+*.csv
+*.xlxs
+*.xlsx
+*.zip
+*.zipx
+*.pdf
+*.txt
+#ignore specific files 
+.Rproj.user
+*.Rproj
+.idea
+.ipynb_checkpoints
+__pycache__
