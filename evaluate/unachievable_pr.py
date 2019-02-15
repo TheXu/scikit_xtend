@@ -13,6 +13,7 @@ from math import log
 from sklearn.metrics import average_precision_score, precision_recall_curve, \
     auc
 
+
 def min_precision(y_true, y_pred):
     """
     Precision (p) and recall (r) must satisfy,
@@ -264,7 +265,7 @@ def normalized_aucpr(y_true, y_score, recall_bounds=[0, 1],
     0.6994385331481325...
     >>> normalized_aucpr(y_true, y_scores, normalize_strategy='random')
     0.5833333333333333...
-    >>> normalized_aucpr(y_true, y_scores, recall_bounds=[0.4,1],
+    >>> normalized_aucpr(y_true, y_scores, recall_bounds=[0.4, 1], \
                          normalize_strategy='auc')
     0.13553408061571867...
     """
